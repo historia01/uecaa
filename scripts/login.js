@@ -2,19 +2,28 @@ const username = "admin";
 const password = "admin";
 let loggedIn = 0;
 
-function hideLoginPrompt() {
-    var temporalLog = localStorage.getItem('_temporalLog');
-    if (temporalLog === '1') {
-        var temporalContent = $('.content');
-        var loginPrompt = document.querySelector('.loginPrompt');
-        loginPrompt.style.display = 'none';
-        $('.content').css('display', 'unset');
-    }
-}
-
 $(document).ready(function() {
-    loggedIn = localStorage.getItem('_temporalLog');
-    hideLoginPrompt();
+    var localsession = localStorage.getItem('_temporalLog');
+    var loginPrompt = document.querySelector('.loginPrompt');
+    loginPrompt.style.display = 'none';
+    $('.content').css('display', 'unset');
+    if(localsession == "1"){
+        $(".sessionStop").html("Admin - Cerrar Sesion");
+        loggedIn = 1;
+    } else {
+        $(".sessionStop").html("Inicia Sesion")
+    }
+    $(".sessionStop").click(function(){
+        if(loggedIn == 1){
+            localStorage.setItem('_temporalLog', '0');
+            location.reload();
+        } else {
+            var temporalContent = $('.content');
+            var loginPrompt = document.querySelector('.loginPrompt');
+            loginPrompt.style.display = 'unset';
+            $('.content').css('display', 'none');
+        }
+    });
     $(".loginButton").click(function(){
         console.log("Trying to Verify credentials...")
         let loggedIn = localStorage.getItem('_temporalLog');
@@ -32,9 +41,5 @@ $(document).ready(function() {
             $("#floatingPassword").addClass("is-invalid");
             $(".invalid-feedback").css("display", "unset")
         }
-    });
-    $(".sessionStop").click(function(){
-        localStorage.setItem('_temporalLog', '0');
-        location.reload();
     });
 });

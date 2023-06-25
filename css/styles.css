@@ -1,0 +1,14 @@
+/*<div style="display: inline-flex;">
+                        <img src="https://placehold.co/128x168">
+                        <div style="display:flex; flex-direction: column;">
+                            <label for="user">Usuario</label>
+                            <input type="text" id="user" name="user" size="10">
+                            <label for="password">Contraseña</label>
+                            <input type="text" id="password" name="password" size="10">
+                            <button style="flex-direction: column-reverse;">Ingresar</button>
+                        </div>
+                    </div>*/
+.text-justify {
+    text-align: justify;
+}
+

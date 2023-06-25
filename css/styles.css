@@ -12,3 +12,11 @@
     text-align: justify;
 }
 
+.staffpic {
+    border: solid #1111117d 7px;
+    border-radius: 50%;
+}
+
+.banner {
+    background-color: #2d2d2d !important;
+}
